@@ -1,0 +1,40 @@
+<!-- BARRA DE NAVEGACIÓN -->
+<app-navbar></app-navbar>
+
+<!--EMPIEZA EL BODY-->
+<body>
+     <!--SUBTITULO-->   
+      <div class="container-fluid text-center">
+        <div class="row">
+          <div class="col-md-12">
+             <div class="mx-auto" style=" width: 400px;" >
+                <h3> Espectáculos</h3>
+              </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- NOTICIAS DE ESPECTÁCULO -->
+      <div class="container">
+        <div class="row mt-5">
+            <div class="col-9">
+                <div *ngFor="let news of inews | paginate: { itemsPerPage: 5, currentPage: page}"> <!--ngx-paginator -->
+                    <app-news-card [news] = "news"></app-news-card>
+                </div>    
+            </div>
+        </div>
+      </div>
+
+      <!-- PAGINATION -->
+      <div class="container">
+        <div class="row">
+          <div class="col sm-6">
+            <pagination-controls (pageChange)="page = $event" previousLabel= "Previo" nextLabel= "Siguiente"
+            maxSize="5"></pagination-controls>
+          </div>
+        </div>
+      </div>
+  <!-- FOOTER -->
+  <app-footer></app-footer>
+</body>
